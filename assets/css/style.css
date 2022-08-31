@@ -1,0 +1,218 @@
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --dark: #262626;
+    --red: #f30000;
+    --short-animation: 0.1s
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+footer, header {
+    background: whitesmoke;
+}
+
+main {
+    flex-grow: 1;
+    background: lightgray;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+}
+
+footer {
+    height: 5rem;
+}
+
+.book-grid {
+    padding-block: 2rem;
+    padding-inline: 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    grid-auto-rows: 17rem;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.book {
+    position: relative;
+    background: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    padding-inline: 1rem;
+    transition: box-shadow var(--short-animation) ease;
+
+    border: 1px solid lightgray;
+    border-radius: 0.5rem;
+}
+
+.book:hover {
+    box-shadow: 0 0.2rem 0.3rem rgba(0, 0, 0, 0.14);
+}
+
+.book > h1, h2 {
+    text-align: center;
+}
+
+/*Прочитанные книги*/
+.book[data-is-read="true"] > .read-btn > svg {
+    fill: green;
+}
+
+.book[data-is-read="true"] > .read-btn {
+    border-color: green;
+}
+
+/*Прочитанные книги*/
+
+h1, h2 {
+    margin: 0;
+    padding: 0;
+    color: var(--dark);
+    font-family: 'Ubuntu', system-ui
+}
+
+.book-title{
+    font-size: 1.5rem;
+}
+
+.book-author{
+    font-size: 0.9rem;
+}
+
+#searchBar {
+    justify-self: center;
+    height: 2rem;
+    width: 100%;
+    max-width: 500px;
+    grid-column: 1 / -1;
+    border-radius: 2rem;
+    padding-inline: 1rem;
+    border: 1px lightgray solid;
+}
+
+.remove-btn {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 0.3rem;
+    border: lightgray 1px solid;
+    transition: border var(--short-animation) ease;
+
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-btn:hover {
+    border: 1px var(--red) solid;
+}
+
+.remove-btn > svg {
+    fill: lightgray;
+    transition: fill var(--short-animation);
+}
+
+.remove-btn:hover > svg {
+    fill: var(--red);
+}
+
+.read-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 0.3rem;
+    border: lightgray 1px solid;
+    transition: border var(--short-animation) ease;
+
+    position: absolute;
+    top: 1rem;
+    right: 2.8rem;
+}
+
+.read-btn:hover {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 0.3rem;
+    border: green 1px solid;
+}
+
+.read-btn > svg {
+    fill: lightgray;
+    transition: fill var(--short-animation);
+}
+
+.read-btn:hover > svg {
+    fill: green;
+}
+
+#add-book-btn {
+    border: none;
+    background: white;
+    border-radius: 0.5rem;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    width: min(500px, 50%);
+    margin-top: 2rem;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.41);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container > form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    background: rgba(0, 0, 0, 0.87);
+    padding: 5rem;
+    border-radius: 1rem;
+
+    color: white;
+    font-family: Ubuntu, system-ui;
+}
+
+.container > form > button {
+    margin-top: 0.5rem;
+    padding-block: 0.5rem;
+}
