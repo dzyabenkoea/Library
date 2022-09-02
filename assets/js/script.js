@@ -42,7 +42,8 @@ function addBookTolibrary(book) {
     const bookGrid = document.querySelector('.book-grid')
     save()
     bookGrid.insertAdjacentHTML('beforeend', book.render())
-    document.querySelector(`.book[data-id="${book.id}"]`).addEventListener('click', readCallback)
+    document.querySelector(`.book[data-id="${book.id}"] .read-btn`).addEventListener('click', readCallback)
+    document.querySelector(`.book[data-id="${book.id}"] .remove-btn`).addEventListener('click', removeCallback)
 }
 
 function removeBookFromLibrary(id) {
@@ -100,6 +101,13 @@ document.querySelector('#add-book-btn').addEventListener('click', (event) => {
 
         const container = document.querySelector('.container')
 
+        function addBookHandler(){
+            const title = container.querySelector('#book-title').value
+            const author = container.querySelector('#book-author').value
+            addBookTolibrary(new Book(crypto.randomUUID(), title, author, false))
+            container.remove()
+        }
+
         function keyUp(event) {
             switch (event.code) {
                 case 'Escape': {
@@ -108,10 +116,7 @@ document.querySelector('#add-book-btn').addEventListener('click', (event) => {
                     break;
                 }
                 case 'Enter': {
-                    const title = container.querySelector('#book-title').value
-                    const author = container.querySelector('#book-author').value
-                    addBookTolibrary(new Book(crypto.randomUUID(), title, author, false))
-
+                    addBookHandler()
                     container.remove()
                     document.removeEventListener('keyup', keyUp)
 
@@ -121,6 +126,7 @@ document.querySelector('#add-book-btn').addEventListener('click', (event) => {
         }
 
         document.addEventListener('keyup', keyUp)
+        document.querySelector('#form-add-book').addEventListener('click', addBookHandler)
         container.querySelector('form>input:first-of-type').focus()
     }
 })
