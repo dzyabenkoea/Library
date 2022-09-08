@@ -101,7 +101,11 @@ document.querySelector('#add-book-btn').addEventListener('click', (event) => {
 
         const container = document.querySelector('.container')
 
-        function addBookHandler(){
+        container.addEventListener('click', () => {
+            container.remove()
+        })
+
+        function addBookHandler() {
             const title = container.querySelector('#book-title').value
             const author = container.querySelector('#book-author').value
             addBookTolibrary(new Book(crypto.randomUUID(), title, author, false))
