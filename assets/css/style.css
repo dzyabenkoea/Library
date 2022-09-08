@@ -209,17 +209,36 @@ h1, h2 {
     flex-direction: column;
     gap: 0.5rem;
 
-    background: rgba(0, 0, 0, 0.87);
+    background: white;
     padding: 5rem;
     border-radius: 1rem;
 
-    color: white;
     font-family: Ubuntu, system-ui;
 }
 
 .container > form > button {
-    margin-top: 0.5rem;
+    background: black;
+    color: white;
+    font-family: inherit;
+
+    border: solid 1px black;
+    border-radius: 0.2rem;
+
+    margin-top: 1rem;
+    padding: 1rem;
+
+    transition: background-color 0.2s, color 0.2s;
+
+}
+
+.container > form > input {
+    padding-inline: 0.5rem;
     padding-block: 0.5rem;
+}
+
+#form-add-book:hover {
+    background: white;
+    color: black;
 }
 
 #book-list-container {
